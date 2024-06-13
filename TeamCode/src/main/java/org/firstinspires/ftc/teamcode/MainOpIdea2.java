@@ -7,6 +7,9 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Servo;
 
+import org.firstinspires.ftc.teamcode.components.Climber2;
+import org.firstinspires.ftc.teamcode.components.Drivetrain;
+
 @TeleOp
 public class MainOpIdea2 {
     @Override
@@ -15,7 +18,7 @@ public class MainOpIdea2 {
                 hardwareMap.get(DcMotorEx.class, "leftDriveMotor"),
                 hardwareMap.get(DcMotorEx.class, "rightDriveMotor")
         );
-        Climber climber = new Climber(
+        Climber2 climber = new Climber2(
                 hardwareMap.get(DcMotorEx.class, "leftClimbMotor"),
                 hardwareMap.get(Servo.class, "leftDeployServo")
         );
