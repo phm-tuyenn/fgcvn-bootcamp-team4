@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Servo;
 
+import org.firstinspires.ftc.teamcode.components.ArmHook;
 import org.firstinspires.ftc.teamcode.components.Climber2;
 import org.firstinspires.ftc.teamcode.components.Drivetrain;
 
@@ -20,7 +21,12 @@ public class MainOpIdea2 {
         );
         Climber2 climber = new Climber2(
                 hardwareMap.get(DcMotorEx.class, "leftClimbMotor"),
-                hardwareMap.get(Servo.class, "leftDeployServo")
+                hardwareMap.get(DcMotorEx.class, "rightClimbMotor")
+        );
+        ArmHook armHook = new ArmHook(
+                hardwareMap.get(DcMotorEx.class, "armMotor"),
+                hardwareMap.get(DcMotorEx.class, "liftMotor"),
+                hardwareMap.get(Servo.class, "alignServo")
         );
 
         linearOpMode.waitForStart();
@@ -28,6 +34,7 @@ public class MainOpIdea2 {
             while(linearOpMode.opModeIsActive()) {
                 drivetrain.run();
                 climber.run();
+                armHook.run();
             }
         }
     }

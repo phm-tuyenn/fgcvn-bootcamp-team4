@@ -6,28 +6,30 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Servo;
 
 public class Climber2 {
-    private final DcMotorEx climbMotor;
-    private final ToggleServo deployServo;
-    public Climber2(DcMotorEx climbMotor, Servo deployServo) {
-        this.climbMotor = climbMotor;
-        this.deployServo = new ToggleServo(deployServo, 0);
+    private final DcMotorEx leftClimbMotor, rightClimbMotor;
+    public Climber2(DcMotorEx leftClimbMotor, DcMotorEx rightClimbMotor) {
+        this.leftClimbMotor = leftClimbMotor;
+        this.rightClimbMotor = rightClimbMotor;
+        this.leftClimbMotor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
+        this.rightClimbMotor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
 
-        this.climbMotor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
+        this.rightClimbMotor.setDirection(DcMotorEx.Direction.REVERSE);
     }
 
     public void run() {
         //make motor stall if no button is pressed
         if(!gamepad1.a && !gamepad1.b) {
-            this.climbMotor.setPower(0);
+            this.leftClimbMotor.setPower(0);
+            this.rightClimbMotor.setPower(0);
         }
-        //toggle servo
-        deployServo.run(gamepad1.start);
         //make both linear pull the robot up/down: button A for pull up, B for down
         if(gamepad1.a) {
-            this.climbMotor.setPower(1);
+            this.leftClimbMotor.setPower(1);
+            this.rightClimbMotor.setPower(1);
         }
         if(gamepad1.b) {
-            this.climbMotor.setPower(-1);
+            this.leftClimbMotor.setPower(-1);
+            this.rightClimbMotor.setPower(-1);
         }
     }
 }

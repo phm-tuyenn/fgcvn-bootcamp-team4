@@ -5,7 +5,6 @@ import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.lin
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
-import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.components.Climber1;
 import org.firstinspires.ftc.teamcode.components.Drivetrain;
@@ -20,8 +19,7 @@ public class MainOpIdea1 {
         );
         Climber1 climber = new Climber1(
                 hardwareMap.get(DcMotorEx.class, "leftClimbMotor"),
-                hardwareMap.get(Servo.class, "leftDeployServo"),
-                hardwareMap.get(DcMotorEx.class, "rotateArmMotor")
+                hardwareMap.get(DcMotorEx.class, "armMotor")
         );
 
         linearOpMode.waitForStart();

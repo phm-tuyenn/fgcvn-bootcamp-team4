@@ -8,10 +8,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class Climber1 {
     private final DcMotorEx climbMotor, rotateArmMotor;
-    private final ToggleServo deployServo;
-    public Climber1(DcMotorEx climbMotor, Servo deployServo, DcMotorEx rotateArmMotor) {
+    public Climber1(DcMotorEx climbMotor, DcMotorEx rotateArmMotor) {
         this.climbMotor = climbMotor;
-        this.deployServo = new ToggleServo(deployServo, 0);
         this.rotateArmMotor = rotateArmMotor;
 
         this.rotateArmMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -22,8 +20,6 @@ public class Climber1 {
         //make motor stall if no button is pressed
         if(!gamepad1.a && !gamepad1.b) this.climbMotor.setPower(0);
         if(!gamepad1.x && !gamepad1.y) rotateArmMotor.setPower(0);
-        //toggle servo
-        deployServo.run(gamepad1.start);
         //make both linear pull the robot up/down: button A for pull up, B for down
         if(gamepad1.a) this.climbMotor.setPower(1);
         if(gamepad1.b) this.climbMotor.setPower(-1);
