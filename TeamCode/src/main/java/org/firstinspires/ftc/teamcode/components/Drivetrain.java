@@ -10,6 +10,8 @@ public class Drivetrain {
     public Drivetrain(DcMotorEx leftDriveMotor, DcMotorEx rightDriveMotor) {
         this.leftDriveMotor = leftDriveMotor;
         this.rightDriveMotor = rightDriveMotor;
+
+        rightDriveMotor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
     }
 
     public void run() {
