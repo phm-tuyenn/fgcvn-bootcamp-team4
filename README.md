@@ -1,8 +1,11 @@
 # bootcamp 2024 fgc vietnam
+## Phân tích code
+- Code nằm trong `/TeamCode/src/main/java/org/firstinspires/ftc/teamcode`, trong đó code cho các idea là `MainOpIdea1.java`, `MainOpIdea2.java`, `MainOpIdea3.java`.
+
+## Các nút bấm được sử dụng
 Đây là layout của Controller
 ![](./front.jpg)
 ![](./trigger.jpg)
-## Các nút bấm được sử dụng
 - Joystick left: tiến/lùi
 - Joystick right: quay trái/phải
 - A: hạ linear xuống

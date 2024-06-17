@@ -20,7 +20,7 @@ public class ArmHook {
         alignServo.setPosition(angle);
         //make motor stall if no button is pressed
         if(!gamepad1.x && !gamepad1.y) armMotor.setPower(0);
-        if(!gamepad1.start) liftMotor.setPower(0);
+        if(!gamepad1.start && !gamepad1.back) liftMotor.setPower(0);
         //rotate arm: X for right, Y for left
         if(gamepad1.x) armMotor.setPower(0.3);
         if(gamepad1.y) armMotor.setPower(-0.3);
