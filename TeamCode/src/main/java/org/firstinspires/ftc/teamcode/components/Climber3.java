@@ -21,11 +21,6 @@ public class Climber3 {
     }
 
     public void run() {
-        //make motor stall if no button is pressed
-        if(!gamepad1.a && !gamepad1.b) {
-            this.leftClimbMotorGroup.setPower(0);
-            this.rightClimbMotorGroup.setPower(0);
-        }
         //toggle servo
         leftDeployServo.run(gamepad1.start);
         rightDeployServo.run(gamepad1.start);
@@ -34,9 +29,13 @@ public class Climber3 {
             this.leftClimbMotorGroup.setPower(1);
             this.rightClimbMotorGroup.setPower(1);
         }
-        if(gamepad1.b) {
+        else if(gamepad1.b) {
             this.leftClimbMotorGroup.setPower(-1);
             this.rightClimbMotorGroup.setPower(-1);
+        }
+        else {
+            this.leftClimbMotorGroup.setPower(0);
+            this.rightClimbMotorGroup.setPower(0);
         }
     }
 }

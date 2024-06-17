@@ -17,14 +17,13 @@ public class Climber1 {
     }
 
     public void run() {
-        //make motor stall if no button is pressed
-        if(!gamepad1.a && !gamepad1.b) this.climbMotor.setPower(0);
-        if(!gamepad1.x && !gamepad1.y) rotateArmMotor.setPower(0);
         //make both linear pull the robot up/down: button A for pull up, B for down
-        if(gamepad1.a) this.climbMotor.setPower(1);
-        if(gamepad1.b) this.climbMotor.setPower(-1);
+        if(gamepad1.a) climbMotor.setPower(1);
+        else if(gamepad1.b) climbMotor.setPower(-1);
+        else climbMotor.setPower(0);
         //rotate arm: button X for rotate right, Y for left
         if(gamepad1.x) rotateArmMotor.setPower(0.3);
-        if(gamepad1.y) rotateArmMotor.setPower(-0.3);
+        else if(gamepad1.y) rotateArmMotor.setPower(-0.3);
+        else rotateArmMotor.setPower(0);
     }
 }
