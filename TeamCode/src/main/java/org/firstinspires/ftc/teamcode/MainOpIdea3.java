@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
 import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.linearOpMode;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -13,7 +14,7 @@ import org.firstinspires.ftc.teamcode.components.Grab;
 import org.firstinspires.ftc.teamcode.components.MotorGroup;
 
 @TeleOp
-public class MainOpIdea3 {
+public class MainOpIdea3 extends LinearOpMode {
     @Override
     public void runOpMode() {
         MotorGroup leftClimbMotor = new MotorGroup(
@@ -42,9 +43,9 @@ public class MainOpIdea3 {
                 hardwareMap.get(Servo.class, "leftDeployServo"),
                 hardwareMap.get(Servo.class, "rightDeployServo")
         );
-        linearOpMode.waitForStart();
-        if(linearOpMode.opModeIsActive()) {
-            while(linearOpMode.opModeIsActive()) {
+        waitForStart();
+        if(opModeIsActive()) {
+            while(opModeIsActive()) {
                 drivetrain.run();
                 climber.run();
                 grab.run();
